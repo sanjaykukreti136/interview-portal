@@ -4,7 +4,7 @@ let  db;
 // if(require('../secrets').link){
 //     db = require('../secrets').link;
 // }else{
-    db = process.env;
+    db = process.env.link;
 // }
 // if(process.env){
 //     db = process.env;

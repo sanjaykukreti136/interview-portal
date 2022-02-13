@@ -3,7 +3,7 @@ let  db;
 // if(require('../secrets').link){
 //     db = require('../secrets').link;
 // }else{
-    db = process.env;
+    db = process.env.link;
 // }
 // const db = (process.env)  || require('../secrets') 
 // const validator = require('email-validator');
