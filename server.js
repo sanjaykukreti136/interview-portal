@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-app.listen(process.PORT || '4000', ()=>{
+app.listen(process.env.PORT || '4000', ()=>{
     console.log("server started");
 })
 
