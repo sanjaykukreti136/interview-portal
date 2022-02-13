@@ -1,5 +1,5 @@
 const mongose = require('mongoose');
-const db =  require('../secrets') || process.env;
+const db = process.env || require('../secrets') 
 const validator = require('email-validator');
 const bcrypt = require("bcrypt");
 
