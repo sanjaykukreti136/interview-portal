@@ -1,10 +1,24 @@
 const mongose = require('mongoose');
-const db =process.env ||  require('../secrets') 
+// const db =process.env ||  require('../secrets') 
+let  db;
+// if(require('../secrets').link){
+//     db = require('../secrets').link;
+// }else{
+    db = process.env;
+// }
+// if(process.env){
+//     db = process.env;
+//     // console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+// }else{
+//     db = require('../secrets').link;
+//     // db = db.link;
+// }
 // const validator = require('email-validator');
 // const bcrypt = require("bcrypt");
 
 /// CONNNECT DATABASE 
-mongose.connect(db.link).then(()=>{
+console.log(db);
+mongose.connect(db).then(()=>{
     console.log('db connect');
 }).catch((err)=>{
     console.log(err);

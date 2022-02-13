@@ -1,10 +1,16 @@
 const mongose = require('mongoose');
-const db = process.env || require('../secrets') 
+let  db;
+// if(require('../secrets').link){
+//     db = require('../secrets').link;
+// }else{
+    db = process.env;
+// }
+// const db = (process.env)  || require('../secrets') 
 // const validator = require('email-validator');
 // const bcrypt = require("bcrypt");
 
 /// CONNNECT DATABASE 
-mongose.connect(db.link).then(()=>{
+mongose.connect(db).then(()=>{
     console.log('db connect');
 }).catch((err)=>{
     console.log(err);
