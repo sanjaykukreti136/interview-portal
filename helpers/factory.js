@@ -19,27 +19,27 @@ function getElements(model_name){
             let elementsPromise ;
             // mongodb query
             if(req.query.myQuery){
-                elementsPromise = model_name.find(req.query.myQuery);
+                elementsPromise = await model_name.find(req.query.myQuery);
             }else{
-                elementsPromise  =model_name.find();
+                elementsPromise  = await model_name.find();
             }
 
             //sort products
             if(req.query.sort){
-                elementsPromise = elementsPromise.sort(req.query.sort);
+                elementsPromise =await elementsPromise.sort(req.query.sort);
             }
 
             // selects
             if(req.query.select){
-                let params = req.query.select.split("%").join(" ");
-                elementsPromise  = elementsPromise.select(params);
+                let params =await req.query.select.split("%").join(" ");
+                elementsPromise  =await elementsPromise.select(params);
             }
 
             // pagination
             let page  = Number(req.query.page) || 1;
             let limit = Number(req.query.limit) || 4;
             let toSkip = (page - 1)*limit;
-            elementsPromise = elementsPromise.skip(toSkip).limit(limit);
+            // elementsPromise = elementsPromise.skip(toSkip).limit(limit);
             let elements = await elementsPromise;
 
 

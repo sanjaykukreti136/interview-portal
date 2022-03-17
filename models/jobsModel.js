@@ -1,45 +1,54 @@
-const mongose = require('mongoose');
-let  db;
+const mongose = require("mongoose");
+// let  db;
 // if(require('../secrets').link){
 //     db = require('../secrets').link;
 // }else{
-    db = process.env.link;
+// db = process.env.link;
 // }
-// const db = (process.env)  || require('../secrets') 
+const db = require("../secrets");
 // const validator = require('email-validator');
 // const bcrypt = require("bcrypt");
 
-/// CONNNECT DATABASE 
-mongose.connect(db).then(()=>{
-    console.log('db connect');
-}).catch((err)=>{
+/// CONNNECT DATABASE
+mongose
+  .connect(db.link)
+  .then(() => {
+    console.log("db connect jobs");
+  })
+  .catch((err) => {
     console.log(err);
-})
-
+  });
 
 // CREATION OF SCHEMA
 const jobsSchema = new mongose.Schema({
-
-    name :{
-        type : String,
-        required : true
-    },
-    
-    postedAt : {
-        type : String
-    },
-    description : {
-        type : String,
-    },
-
-    applied : {
-        type : [String]
-    }
-
-})
-
-
-
+  name: {
+    type: String,
+    required: true,
+  },
+  recruiter: {
+    type: String,
+  },
+  postedAt: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  typej: {
+    type: String,
+    enum: ["Intern", "FTE"],
+    default: "FTE",
+  },
+  location: {
+    type: String,
+  },
+  skills: {
+    type: String,
+  },
+  applied: {
+    type: [Object],
+  },
+});
 
 // / undefined confrimPassword after validation , so it can remove from databse
 // jobsSchema.pre('save', async function(){
@@ -50,8 +59,7 @@ const jobsSchema = new mongose.Schema({
 //     this.confirmPassword = undefined;
 // } )
 
-
 //! CREATION OF MODEL
-const jobsModel = mongose.model('jobsModel', jobsSchema );
+const jobsModel = mongose.model("jobsModel", jobsSchema);
 
 module.exports = jobsModel;
