@@ -15,11 +15,15 @@ const {
 const res = require("express/lib/response");
 
 app.use(protectRoute);
-
+console.log("====================================");
+console.log("user router called");
+console.log("====================================");
 userRouter
   .route("/")
   .get(isAuthorized(["admin", "ce"]), getElements(userModel))
   .post(isAuthorized(["admin"]), createElement(userModel));
+
+// userRouter.route("/meets").post(get_meets);
 
 userRouter
   .route("/:id")

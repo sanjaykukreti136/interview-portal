@@ -56,6 +56,9 @@ const userSchema = new mongose.Schema({
     enum: ["admin", "Recruiter", "Student"],
     default: "Student",
   },
+  meetings: {
+    type: [Object],
+  },
 });
 
 /// undefined confrimPassword after validation , so it can remove from databse

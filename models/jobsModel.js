@@ -48,6 +48,9 @@ const jobsSchema = new mongose.Schema({
   applied: {
     type: [Object],
   },
+  applied_emails: {
+    type: [String],
+  },
 });
 
 // / undefined confrimPassword after validation , so it can remove from databse
