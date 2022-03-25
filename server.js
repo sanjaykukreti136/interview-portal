@@ -22,6 +22,13 @@ app.use(
   })
 );
 
+app.use(
+  cors({
+    origin: "http://jobs-portal-get-hired.herokuapp.com/",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const authRouter = require("./routers/authRouter");
