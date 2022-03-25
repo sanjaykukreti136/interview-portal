@@ -12,14 +12,15 @@ const cookieParser = require("cookie-parser");
 //   console.log("server started");
 // });
 // app.use(cors());
+app.use(express.static("public/build"));
 app.use(cookieParser()); /// req ki body ke ander , cookies ko populate kr deta hai  , ek tarike se req ke object me cookie ki key bna deta hai
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
 
 app.use(express.json());
 
@@ -75,6 +76,7 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(4000, () => {
-  console.log(`Server is running at port ${4000}`);
+const PORT = process.env.PORT || 4000;
+http.listen(PORT, () => {
+  console.log(`Server is running at port ${PORT}`);
 });
