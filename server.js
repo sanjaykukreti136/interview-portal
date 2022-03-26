@@ -1,4 +1,4 @@
-const cors = require("cors");
+// const cors = require("cors");
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
@@ -15,20 +15,26 @@ const cookieParser = require("cookie-parser");
 app.use(express.static("public/build"));
 app.use(cookieParser()); /// req ki body ke ander , cookies ko populate kr deta hai  , ek tarike se req ke object me cookie ki key bna deta hai
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
 
-app.use(
-  cors({
-    origin: "http://jobs-portal-get-hired.herokuapp.com/",
-    credentials: true,
-  })
-);
-
+// app.use(
+//   cors({
+//     origin: "http://jobs-portal-get-hired.herokuapp.com/",
+//     credentials: true,
+//   })
+// );
+const cors = require("cors");
+const corsOptions = {
+  origin: "http://jobs-portal-get-hired.herokuapp.com/",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const authRouter = require("./routers/authRouter");
