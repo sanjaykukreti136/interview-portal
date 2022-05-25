@@ -240,7 +240,7 @@ async function sendMeetingMail(req, res) {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: '"Fred Foo 👻" <foo@example.com>', // sender address
-      to: "sanjaykukreti900@gmail.com", // list of receivers
+      to: email, // list of receivers
       subject: "Congratulations  ✔", // Subject line
       html: `Your meet link ${meet_link} for the job ${job} . For other msg mail ${rec_mail} `, // html body
     });

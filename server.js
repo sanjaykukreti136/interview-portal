@@ -29,7 +29,7 @@ app.use(cookieParser()); /// req ki body ke ander , cookies ko populate kr deta 
 //   })
 // );
 const cors = require("cors");
-app.use(cors());
+// app.use(cors());
 const corsOptions = {
   origin: "http://jobs-portal-get-hired.herokuapp.com/",
   credentials: true, //access-control-allow-credentials:true
