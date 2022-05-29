@@ -31,7 +31,7 @@ app.use(cookieParser()); /// req ki body ke ander , cookies ko populate kr deta 
 const cors = require("cors");
 // app.use(cors());
 const corsOptions = {
-  origin: "http://jobs-portal-get-hired.herokuapp.com/",
+  origin: "http://localhost:3001.com/",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -90,7 +90,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = 3000;
 http.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
